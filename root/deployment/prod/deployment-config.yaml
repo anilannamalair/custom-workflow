@@ -1,0 +1,3 @@
+environment: prod
+artifactLocation: "/artifacts/serviceA"
+deployTo: http://prod.example.com

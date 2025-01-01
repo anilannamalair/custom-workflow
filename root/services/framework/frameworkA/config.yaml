@@ -1,0 +1,5 @@
+frameworkName: frameworkA
+version: 1.0.0
+features:
+  - logging
+  - authentication
