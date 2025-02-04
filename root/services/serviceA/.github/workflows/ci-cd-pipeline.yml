@@ -1,20 +1,17 @@
+name: CI/CD Pipeline
+on:
+  push:
+    branches:
+      - main
 jobs:
-  test:
-    runs-on: ubuntu-latest
-    steps:
-    - {name: Checkout repository, uses: actions/checkout@v2}
-    - {name: Run ./test.sh, run: ./test.sh}
   build:
     runs-on: ubuntu-latest
     steps:
-    - {name: Checkout repository, uses: actions/checkout@v2}
-    - {name: Run ./build.sh, run: ./build.sh}
-  deploy:
-    runs-on: ubuntu-latest
-    steps:
-    - {name: Checkout repository, uses: actions/checkout@v2}
-    - {name: Run ./deploy.sh, run: ./deploy.sh}
-name: CI/CD Pipeline
-'on':
-  push:
-    branches: [main]
+      - name: Checkout repository
+        uses: actions/checkout@v2
+      - name: Set up JDK
+        uses: actions/setup-java@v2
+        with:
+          java-version: '11'
+      - name: Build project
+        run: ./gradlew build
